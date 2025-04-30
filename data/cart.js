@@ -8,6 +8,10 @@ export let cart = [
     quantity:1,
   } ];
 
+ function saveToStorage(){
+    localStorage.setItem('cart',JSON.stringify(cart));
+ }
+
 export function addToCart(productId) {
   const selectElement = document.querySelector(
     `.js-quantity[data-product-id="${productId}"]`
@@ -28,6 +32,8 @@ export function addToCart(productId) {
     });
   }
   selectElement.value = "1";
+
+  saveToStorage();
 }
 
 export function removeFromCart(productId){
