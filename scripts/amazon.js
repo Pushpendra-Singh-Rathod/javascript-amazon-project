@@ -43,7 +43,7 @@ products.forEach((product)=> {
 
     <div class="product-spacer"></div>
 
-    <div class="added-to-cart">
+    <div class="added-to-cart js-added-to-cart"  data-product-id="${product.id}">
       <img src="images/icons/checkmark.png">
       Added
     </div>
@@ -74,4 +74,41 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=> {
       addToCart(productId);
       updateCart();
     });
+});
+
+let lastVisibleMessage = null;
+
+document.querySelectorAll(".js-add-to-cart").forEach((button) => {
+  button.addEventListener("click", () => {
+    const productId = button.dataset.productId;
+    const addedMessage = document.querySelector(
+      `.js-added-to-cart[data-product-id="${productId}"]`
+    );
+
+
+    if (lastVisibleMessage && lastVisibleMessage !== addedMessage) {
+      lastVisibleMessage.classList.remove("visible");
+      if (lastVisibleMessage.hideTimeoutId) {
+        clearTimeout(lastVisibleMessage.hideTimeoutId);
+        lastVisibleMessage.hideTimeoutId = null;
+      }
+    }
+
+    addedMessage.classList.add("visible");
+
+    
+    if (addedMessage.hideTimeoutId) {
+      clearTimeout(addedMessage.hideTimeoutId);
+    }
+
+   
+    addedMessage.hideTimeoutId = setTimeout(() => {
+      addedMessage.classList.remove("visible");
+      addedMessage.hideTimeoutId = null;
+      lastVisibleMessage = null;
+    }, 2000);
+
+    // Track currently visible message
+    lastVisibleMessage = addedMessage;
+  });
 });
