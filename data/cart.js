@@ -17,7 +17,6 @@ export let cart = JSON.parse(localStorage.getItem('cart'));
 
  function saveToStorage(){
     localStorage.setItem('cart',JSON.stringify(cart));
-    console.log(localStorage.getItem('cart'));
  }
 
 export function addToCart(productId) {
@@ -67,6 +66,6 @@ export function removeFromCart(productId){
   });
 
   matchingItem.deliveryOptionId=deliveryOptionId;
-  
+
   saveToStorage();
 }
