@@ -118,5 +118,7 @@ export function renderOrderSummary() {
       renderPaymentSummary();
     });
   });
+
+  document.querySelector('.js-header-quantity').innerHTML=`${cart.length} items`;
 }
 renderOrderSummary();

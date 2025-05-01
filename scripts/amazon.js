@@ -64,7 +64,7 @@ function updateCart(){
       cartQuantity += CartItem.quantity;
     });
   
-    document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
+    document.querySelector('.js-cart-quantity').innerHTML=cartQuantity ;
      
 }
 document.querySelectorAll('.js-add-to-cart').forEach((button)=> {
@@ -112,3 +112,4 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     lastVisibleMessage = addedMessage;
   });
 });
+
