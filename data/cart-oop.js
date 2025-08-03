@@ -89,6 +89,3 @@ const businessCart= Cart('cart-business');
 
 businessCart.loadFromStorage();
 cart.loadFromStorage();
-
-console.log(cart);
-console.log(businessCart);
